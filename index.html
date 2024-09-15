@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Kanini Weekly Class Timetable</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #4158D0;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+        }
+        .table {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        h1 {
+            font-weight: 600;
+            color: #333;
+            font-size: calc(1.5rem + 1.5vw);
+        }
+        .table th, .table td {
+            padding: 0.75rem;
+            font-size: calc(0.8rem + 0.2vw);
+        }
+        .profile-image {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
+            transition: transform 0.3s ease-in-out;
+        }
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        .profile-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .profile-image-container {
+            flex: 0 0 250px;
+            margin-right: 20px;
+        }
+        .profile-info-container {
+            flex: 1;
+            padding: 20px;
+            border: 4px solid transparent;
+            border-radius: 15px;
+            background: 
+                linear-gradient(#fff, #fff) padding-box,
+                linear-gradient(43deg, #4158D0, #C850C0, #FFCC70) border-box;
+            margin-left: 20px; /* Move to the right */
+        }
+        .checkbox-column {
+            width: 50px;
+        }
+        .attendance-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .table td {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .attended td::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(to right, #FF416C, #FF4B2B);
+            filter: blur(2px);
+            animation: burnThrough 1s ease-out forwards;
+        }
+        @keyframes burnThrough {
+            0% {
+                width: 0;
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                width: 100%;
+                opacity: 0.7;
+            }
+        }
+        .attended td::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            background: #FF416C;
+            border-radius: 50%;
+            filter: blur(3px);
+            animation: flameTip 1s ease-out forwards;
+        }
+        @keyframes flameTip {
+            0% {
+                left: 0;
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+        @media (min-width: 768px) {
+            .profile-container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .profile-image-container {
+                flex: 0 0 250px;
+                margin-right: 20px;
+                margin-bottom: 0;
+            }
+            .profile-info-container {
+                flex: 1;
+            }
+        }
+        @media (max-width: 767px) {
+            .table-responsive {
+                font-size: 0.8rem;
+            }
+            .checkbox-column {
+                width: 30px;
+            }
+            .attendance-checkbox {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h1 class="text-center mb-5">Rose Kanini Weekly Class Timetable</h1>
+                
+                <div class="profile-container">
+                    <div class="profile-image-container">
+                        <img src="rose_kanini.jpg" alt="Rose Kanini" class="profile-image">
+                    </div>
+                    <div class="profile-info-container">
+                        <h2>Rose Kanini</h2>
+                        <p>BSD 2.2: Bachelor of Science in Software Development</p>
+                        <p>Student at KCA University</p>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Day</th>
+                                <th>Time</th>
+                                <th>Room</th>
+                                <th>Unit Code</th>
+                                <th>Unit Name</th>
+                                <th>Lecturer Name</th>
+                                <th class="checkbox-column">Attended</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday</td>
+                                <td>0800-1200 HRS</td>
+                                <td>TC 3-8</td>
+                                <td>BSD 2208</td>
+                                <td>CLOUD APPLICATION DEVELOPMENT</td>
+                                <td>ELPHAS LITSALITSA</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>0800-1200 HRS</td>
+                                <td>TC 3-5</td>
+                                <td>BSD 2208</td>
+                                <td>CLOUD APPLICATION DEVELOPMENT</td>
+                                <td>DAVID OPONDO</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>1400-1700 HRS</td>
+                                <td>VIRTUAL</td>
+                                <td>BSD 2204</td>
+                                <td>FINANCIAL MANAGEMENT FOR IT</td>
+                                <td>EDWARD MATIBA</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>0800-1200 HRS</td>
+                                <td>TC 0-3</td>
+                                <td>BSD 2302</td>
+                                <td>PYTHON PROGRAMMING</td>
+                                <td>ELPHAS LITSALITSA</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>0800-1200 HRS</td>
+                                <td>TC 0-7/0.8</td>
+                                <td>BSD 2302</td>
+                                <td>PYTHON PROGRAMMING</td>
+                                <td>ZTBA_SOT</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>1400-1800 HRS</td>
+                                <td>TC 0-7/0.8</td>
+                                <td>BSD 2303</td>
+                                <td>MOBILE PROGRAMMING</td>
+                                <td>JANE MASAA</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>1400-1800 HRS</td>
+                                <td>DA LAB</td>
+                                <td>BSD 2203</td>
+                                <td>MOBILE PROGRAMMING</td>
+                                <td>MAURICE ODAMBATAFWA</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>1300-1700 HRS</td>
+                                <td>ZOOM4220</td>
+                                <td>BSD 2207</td>
+                                <td>PRINCIPLES OF ARTIFICIAL INTELLIGENCE</td>
+                                <td>DOROTHY MUTUA</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>0800-1100 HRS</td>
+                                <td>ZOOM#79</td>
+                                <td>BSD 2301</td>
+                                <td>NETWORK SCIENCE THEORY</td>
+                                <td>DR. NICHODEMUS AKETCH</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>1400-1700 HRS</td>
+                                <td>VIRTUAL</td>
+                                <td>BSD 2206</td>
+                                <td>PRINCIPLES OF IS SECURITY</td>
+                                <td>NGIGI STANLEY MUGA</td>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="attendance-checkbox">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.attendance-checkbox');
+
+            function markAttendance(checkbox, isChecked) {
+                const row = checkbox.closest('tr');
+                const unitName = row.querySelector('td:nth-child(5)').textContent; // Assuming Unit Name is the 5th column
+
+                // Find all rows with the same unit name and update their checkboxes
+                document.querySelectorAll('tr').forEach(tr => {
+                    if (tr.querySelector('td:nth-child(5)').textContent === unitName) {
+                        const cb = tr.querySelector('.attendance-checkbox');
+                        cb.checked = isChecked;
+                        tr.classList.toggle('attended', isChecked);
+                    }
+                });
+            }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    markAttendance(this, this.checked);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
